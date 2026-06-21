@@ -66,4 +66,4 @@ Cancelado
 ### 1. Clonar o repositório
 
 ```bash
-git clone https://github.com/seuusuario/RestaurantOrderQueueApi.git
+git clone https://github.com/nalaurandrade/APIRestaurante_.git
