@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="../RestaurantOrderQueueApi.Api/RestaurantOrderQueueApi.Api.csproj" />
+  <Project Path="../RestaurantOrderQueueApi.Application/RestaurantOrderQueueApi.Application.csproj" />
+  <Project Path="../RestaurantOrderQueueApi.Domain/RestaurantOrderQueueApi.Domain.csproj" />
+  <Project Path="../RestaurantOrderQueueApi.Infrastructure/RestaurantOrderQueueApi.Infrastructure.csproj" />
+  <Project Path="../RestaurantOrderQueueApi.UnitTests/RestaurantOrderQueueApi.UnitTests.csproj" />
+  <Project Path="APIRestaurante.csproj" />
+</Solution>

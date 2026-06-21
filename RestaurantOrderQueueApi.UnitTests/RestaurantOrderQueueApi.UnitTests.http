@@ -1,0 +1,6 @@
+@RestaurantOrderQueueApi.UnitTests_HostAddress = http://localhost:5115
+
+GET {{RestaurantOrderQueueApi.UnitTests_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

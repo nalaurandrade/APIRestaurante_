@@ -1,0 +1,6 @@
+@RestaurantOrderQueueApi.Domain_HostAddress = http://localhost:5030
+
+GET {{RestaurantOrderQueueApi.Domain_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
