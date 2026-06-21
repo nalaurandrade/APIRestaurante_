@@ -1,6 +1,14 @@
-﻿namespace RestaurantOrderQueueApi.Infrastructure.Persistence
+﻿using Microsoft.EntityFrameworkCore;
+using RestaurantOrderQueueApi.Domain.Entities;
+
+namespace RestaurantOrderQueueApi.Infrastructure.Persistence;
+
+public class AppDbContext : DbContext
 {
-    public class AppDbContext
+    public AppDbContext(DbContextOptions<AppDbContext> options)
+        : base(options)
     {
     }
+
+    public DbSet<Pedido> Pedidos { get; set; }
 }

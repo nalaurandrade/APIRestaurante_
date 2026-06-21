@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.9" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.1" />
   </ItemGroup>
 
@@ -21,6 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\RestaurantOrderQueueApi.Application\RestaurantOrderQueueApi.Application.csproj" />
     <ProjectReference Include="..\RestaurantOrderQueueApi.Domain\RestaurantOrderQueueApi.Domain.csproj" />
+    <ProjectReference Include="..\RestaurantOrderQueueApi.Infrastructure\RestaurantOrderQueueApi.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

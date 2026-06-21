@@ -28,6 +28,16 @@ public class PedidoService : IPedidoService
         return await _repository.ListarAsync();
     }
 
+    public async Task<List<Pedido>> ListarPaginadoAsync(int page, int size)
+    {
+        return await _repository.ListarPaginadoAsync(page, size);
+    }
+
+    public async Task<List<Pedido>> BuscarFiltroAsync(string? descricao)
+    {
+        return await _repository.BuscarFiltroAsync(descricao);
+    }
+
     public async Task<Pedido?> BuscarAsync(Guid id)
     {
         return await _repository.BuscarPorIdAsync(id);

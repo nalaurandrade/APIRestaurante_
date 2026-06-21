@@ -1,69 +1,137 @@
-# RestaurantOrderQueueApi
+# 🍽️ RestaurantOrderQueueApi
 
-API REST desenvolvida em ASP.NET Core para gerenciamento de pedidos em restaurante utilizando fila de prioridade baseada em Heap.
+API REST desenvolvida em **.NET 10** para gerenciamento de pedidos em fila de restaurante, com controle de prioridade, status, paginação e exclusão lógica.
 
-## Objetivo
+---
 
-O sistema simula o atendimento de pedidos em um restaurante onde a ordem de preparo não depende apenas da ordem de chegada, mas também de critérios de prioridade definidos pela regra de negócio.
+## 📌 Objetivo
 
-## Regra de Prioridade
+O sistema tem como objetivo simular uma fila de pedidos de restaurante, permitindo:
 
-A prioridade dos pedidos é calculada automaticamente utilizando os seguintes critérios:
+- Cadastro de pedidos
+- Consulta por ID
+- Listagem paginada
+- Busca por descrição
+- Atualização de pedidos
+- Cancelamento lógico (não remove do banco)
 
-| Critério | Pontuação |
-|-----------|-----------|
-| Cliente prioritário | +50 |
-| Pedido Delivery | +30 |
-| Tempo de preparo | +Tempo informado |
+---
 
-### Exemplo
+## 🧱 Arquitetura
 
-Pedido A:
+O projeto segue princípios de **Clean Architecture**, dividido em camadas:
 
-- Cliente prioritário: Sim
-- Delivery: Sim
-- Tempo de preparo: 20
+RestaurantOrderQueueApi
+│
+├── Api (Controllers e DTOs)
+├── Application (Services, UseCases, Interfaces)
+├── Domain (Entities, Enums, Interfaces)
+├── Infrastructure (Banco de dados e Repositórios)
 
-Prioridade:
 
-50 + 30 + 20 = 100
+---
 
-Pedido B:
+## ⚙️ Tecnologias Utilizadas
 
-- Cliente prioritário: Não
-- Delivery: Sim
-- Tempo de preparo: 15
-
-Prioridade:
-
-0 + 30 + 15 = 45
-
-Neste caso o Pedido A será atendido primeiro.
-
-### Critério de Desempate
-
-Em caso de empate na prioridade, será atendido primeiro o pedido que foi cadastrado antes.
-
-## Exclusão Lógica
-
-A exclusão de pedidos não remove registros do banco de dados.
-
-Ao executar o endpoint DELETE, o status do pedido é alterado para:
-
-Cancelado
-
-## Tecnologias Utilizadas
-
-- ASP.NET Core
-- C#
+- .NET 10
+- ASP.NET Core Web API
 - Entity Framework Core
-- PostgreSQL
-- Docker
-- Swagger
+- Swagger (OpenAPI)
+- C#
 
-## Como Executar
+---
+
+## 📦 Funcionalidades
+
+### ✔ Criar pedido
+Cria um novo pedido com status inicial `Pendente`.
+
+### ✔ Listar pedidos
+Lista todos os pedidos cadastrados.
+
+### ✔ Listagem paginada
+Permite paginação:
+
+
+GET /recurso?page=1&size=10
+
+
+### ✔ Buscar por ID
+Retorna um pedido específico.
+
+
+GET /recurso/{id}
+
+### ✔ Buscar por filtro
+Busca pedidos por descrição:
+
+
+GET /recurso/buscar?descricao=burger
+
+
+### ✔ Atualizar pedido
+Atualiza dados e recalcula prioridade/valor.
+
+
+PUT /recurso/{id}
+
+
+### ✔ Cancelar pedido (exclusão lógica)
+Altera status para `Cancelado`.
+
+
+DELETE /recurso/{id}
+
+
+---
+
+## 🔗 Endpoints da API
+
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
+| POST | `/recurso` | Criar pedido |
+| GET | `/recurso/{id}` | Buscar por ID |
+| GET | `/recurso` | Listar paginado |
+| GET | `/recurso/buscar` | Buscar por descrição |
+| PUT | `/recurso/{id}` | Atualizar pedido |
+| DELETE | `/recurso/{id}` | Cancelar pedido |
+
+---
+
+## ▶️ Como executar o projeto
 
 ### 1. Clonar o repositório
 
 ```bash
 git clone https://github.com/nalaurandrade/APIRestaurante_.git
+
+2. Entrar na pasta do projeto
+cd APIRestaurante
+3. Restaurar dependências
+dotnet restore
+4. Rodar a API
+dotnet run --project RestaurantOrderQueueApi.Api
+
+🌐 Swagger
+
+Após rodar o projeto:
+
+http://localhost:5227
+📁 Estrutura do Pedido
+{
+  "clienteNome": "João Silva",
+  "descricao": "Hambúrguer com batata",
+  "clientePrioritario": true,
+  "delivery": false,
+  "tempoPreparo": 15,
+  "prioridade": 1
+}
+📊 Regras de Negócio
+Todo pedido inicia com status Pendente
+O valor é calculado automaticamente
+Exclusão é lógica (status = Cancelado)
+Paginação baseada em page e size
+👨‍💻 Autor
+
+Projeto desenvolvido para fins acadêmicos.
+
